@@ -1,0 +1,9 @@
+const STORAGE_KEY = 'beshoy-code-state';
+const DEFAULT_STATE = { userName: 'بيشوي', theme: 'light', completedLessons: [], quizResults: {}, notes: [], achievements: [], lastVisitedLesson: 'html-what', learningStreak: 1, practiceSolved: 0, settings: {} };
+function getState() { try { return { ...DEFAULT_STATE, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') }; } catch { return { ...DEFAULT_STATE }; } }
+function saveState(partial) { const next = { ...getState(), ...partial }; localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); return next; }
+function markLessonComplete(lessonId) { const state = getState(); if (!state.completedLessons.includes(lessonId)) state.completedLessons.push(lessonId); return saveState({ completedLessons: state.completedLessons, lastVisitedLesson: lessonId }); }
+function getCourseProgress(courseId) { const course = COURSES.find(item => item.id === courseId); if (!course) return 0; const state = getState(); return Math.round(course.lessons.filter(lesson => state.completedLessons.includes(lesson.id)).length / course.lessons.length * 100); }
+function recordQuiz(courseId, score, total) { const state = getState(); state.quizResults[courseId] = { score, total, percentage: Math.round(score / total * 100), date: new Date().toISOString() }; return saveState({ quizResults: state.quizResults }); }
+function syncAchievements() { const state = getState(); const unlocked = new Set(state.achievements); if (state.completedLessons.length >= 1) unlocked.add('first-lesson'); if (state.completedLessons.length >= 10) unlocked.add('ten-lessons'); if (Object.values(state.quizResults).some(result => result.percentage === 100)) unlocked.add('perfect-score'); COURSES.forEach(course => { if (getCourseProgress(course.id) === 100) unlocked.add(`${course.id}-master`); }); return saveState({ achievements: [...unlocked] }); }
+function applyTheme() { document.documentElement.dataset.theme = getState().theme; }

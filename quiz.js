@@ -1,0 +1,1 @@
+window.BeshoyQuiz = { grade: (score, total) => Math.round(score / total * 100), label: percentage => percentage >= 90 ? 'ممتاز' : percentage >= 80 ? 'جيد جدًا' : percentage >= 70 ? 'جيد' : 'يحتاج مراجعة' };

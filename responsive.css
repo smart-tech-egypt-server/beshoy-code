@@ -1,0 +1,206 @@
+@media (max-width: 1050px) {
+    .nav-links {
+        display: none;
+    }
+
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .course-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .badge-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .container {
+        width: min(100% - 28px, 620px);
+    }
+
+    .section {
+        padding: 52px 0;
+    }
+
+    .navbar {
+        min-height: 68px;
+    }
+
+    .brand-mark {
+        font-size: .92rem;
+    }
+
+    .nav-actions .btn-primary {
+        display: none;
+    }
+
+    .mobile-menu {
+        display: grid;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-drawer {
+        position: absolute;
+        inset-inline: 14px;
+        top: calc(100% + 8px);
+        display: grid;
+        gap: 4px;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity .2s, transform .2s;
+    }
+
+    .mobile-drawer.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .mobile-drawer a {
+        padding: 10px 12px;
+        color: var(--muted);
+        border-radius: 9px;
+    }
+
+    .mobile-drawer a:hover,
+    .mobile-drawer a.active {
+        color: var(--brand);
+        background: color-mix(in srgb, var(--brand) 10%, transparent);
+    }
+
+    .hero {
+        padding: 54px 0;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+    }
+
+    .hero-editor {
+        transform: none;
+    }
+
+    .stats-grid,
+    .course-grid,
+    .steps-grid,
+    .feature-grid,
+    .course-list,
+    .dashboard-grid,
+    .note-grid,
+    .badge-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-head,
+    .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .app-layout {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .dashboard-main {
+        padding: 24px 14px;
+    }
+
+    .lesson-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .lesson-sidebar {
+        position: static;
+        max-height: none;
+        order: 2;
+    }
+
+    .lesson-actions {
+        flex-direction: column;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-field.full {
+        grid-column: auto;
+    }
+
+    .page-header {
+        padding: 36px 0 20px;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .search-input {
+        max-width: none;
+    }
+
+    .practice-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .practice-challenge {
+        position: static;
+    }
+
+    .practice-tabs {
+        margin-inline: -7px;
+    }
+
+    .code-editor-shell {
+        height: 270px;
+    }
+}
+
+@media (max-width: 380px) {
+    .container {
+        width: calc(100% - 22px);
+    }
+
+    .actions .btn {
+        width: 100%;
+    }
+
+    .hero-editor {
+        padding: 10px;
+    }
+
+    .code-preview {
+        padding: 14px;
+        font-size: .78rem;
+    }
+}
